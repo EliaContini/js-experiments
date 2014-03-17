@@ -50,7 +50,7 @@
 				link.setAttribute("download", fileName);
 			}
 			else if(navigator.msSaveBlob) { // IE 10+
-				link.attachEventListener("click", function(event) {
+				link.addEventListener("click", function(event) {
 					var blob = new Blob([buffer], {
 						"type": "text/csv;charset=utf-8;"
 					});
