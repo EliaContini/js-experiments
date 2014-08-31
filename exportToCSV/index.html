@@ -39,28 +39,26 @@
 			});
 			
 			// download stuff
-			var buffer = csvData.join("\n");
-			var uri = "data:text/csv;charset=utf8," + encodeURIComponent(buffer);
 			var fileName = "data.csv";
-			
+			var buffer = csvData.join("\n");
+			var blob = new Blob([buffer], {
+				"type": "text/csv;charset=utf8;"			
+			});
 			var link = document.createElement("a");
+			
 			if(link.download !== undefined) { // feature detection
 				// Browsers that support HTML5 download attribute
-				link.setAttribute("href", uri);
+				link.setAttribute("href", window.URL.createObjectURL(blob));
 				link.setAttribute("download", fileName);
 			}
 			else if(navigator.msSaveBlob) { // IE 10+
-				link.attachEventListener("click", function(event) {
-					var blob = new Blob([buffer], {
-						"type": "text/csv;charset=utf-8;"
-					});
-					navigator.msSaveBlob(blob, fileName);
-				}, false);
+				navigator.msSaveBlob(blob, fileName);
 			}
 			else { 
 				// it needs to implement server side export
 				link.setAttribute("href", "http://www.example.com/export");
 			}
+
 			link.innerHTML = "Export to CSV";
 			document.body.appendChild(link);
 		</script>
