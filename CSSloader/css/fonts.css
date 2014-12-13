@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+/*
+ * Author : Elia Contini
+ * Created: 13 Oct 2013
+ */
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/OpenSans300.woff") format("woff");
+}
+

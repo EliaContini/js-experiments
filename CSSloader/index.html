@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-us">
+	<head>
+		<meta charset="utf-8"/>
+        <meta name="Author" content="Elia Contini"/>
+		<title>Deferred CSS loading</title>
+		<style>
+			/* critical rules in page */
+			body {
+				background-color: #fff;
+				color: #000;
+				font-family: sans-serif;
+			}
+			
+			.styled {
+				background-color: #0f0;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="styled">Should be white on black</h1>
+		<script>
+            var CSSloader = {
+                add: function(/*Object*/ attr) {
+                    var linkNode = document.createElement("link");
+                    for(var key in attr) {
+                        linkNode.setAttribute(key, attr[key]);
+                    }
+                    document.head.appendChild(linkNode);
+                }            
+            };
+			// fonts
+            CSSloader.add({
+                "rel": "stylesheet",
+                "type": "text/css",
+                "href": "css/fonts.css"
+            });
+			// UI
+            CSSloader.add({
+                "rel": "stylesheet",
+                "type": "text/css",
+                "href": "css/style.css"
+            });
+		</script>
+	</body>
+</html>

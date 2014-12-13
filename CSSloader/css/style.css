@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+/*
+ * Author : Elia Contini
+ * Created: 13 Oct 2013
+ */
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.styled {
+	background-color: #000;
+	color: #fff;
+}
